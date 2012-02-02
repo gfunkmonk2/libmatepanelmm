@@ -1,0 +1,6 @@
+Name: libmatepanelappletmm
+Description: C++ wrapper for mate-vfs, not installed.
+Requires: gtkmm-2.4 >= @GTKMM_VERSION_NEEDED@ mateconfmm-2.6 >= @MATECONFMM_VERSION_NEEDED@ libmatepanelapplet-2.0 >= @LIBPANELAPPLET_VERSION_NEEDED@
+Version: @VERSION@
+Libs:  ${pc_top_builddir}/${pcfiledir}/libmatepanelappletmm/liblibmatepanelappletmm-2.6.la
+Cflags: -I${pc_top_builddir}/${pcfiledir}/@srcdir@/

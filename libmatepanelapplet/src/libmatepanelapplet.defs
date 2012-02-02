@@ -1,0 +1,4 @@
+(include libmatepanelapplet_enums.defs)
+(include libmatepanelapplet_methods.defs)
+(include libmatepanelapplet_signals.defs)
+(include libmatepanelapplet_vfuncs.defs)

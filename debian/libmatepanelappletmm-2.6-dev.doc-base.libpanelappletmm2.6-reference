@@ -1,0 +1,9 @@
+Document: libmatepanelappletmm2.6-reference
+Title: libmatepanelappletmm 2.6 Reference Manual
+Author: Doxygen
+Abstract: Reference Manual for libmatepanelappletmm 2.6 (C++ bindings for libmate-panel-applet)
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/libmatepanelappletmm-2.6-dev/docs/reference/html/index.html
+Files: /usr/share/doc/libmatepanelappletmm-2.6-dev/docs/reference/html/*.html

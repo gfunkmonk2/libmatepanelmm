@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/class/autotools.mk
+
+MATE_MODULE := libmatepanelappletmm
+
+SHARED_PKG := $(shell sed -rn 's/^Package:[[:space:]]*(libmatepanelappletmm-[[:digit:]\.]+-[[:digit:]][[:alnum:]]*)[[:space:]]*$$/\1/p' debian/control)
+DEV_PKG := $(shell sed -rn 's/^Package:[[:space:]]*(libmatepanelappletmm-[[:digit:]\.]+-dev)[[:space:]]*$$/\1/p' debian/control)
+SHVER := 2.22.0
+
+LDFLAGS += -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
+
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-static
+DEB_DH_INSTALL_SOURCEDIR := debian/tmp
+DEB_DH_MAKESHLIBS_ARGS_$(SHARED_PKG) += -V"$(SHARED_PKG) (>= $(SHVER))"
+DEB_INSTALL_DOCS_$(DEV_PKG) += -XMakefile -XDoxyfile
+DEB_INSTALL_EXAMPLES_$(DEV_PKG) += -XMakefile -X.deps -X.libs -X.o
+
+# chrpath hack to get rid of amd64 rpath
+common-install-impl::
+	chrpath -d $(DEB_DH_INSTALL_SOURCEDIR)/usr/lib/*.so*
+
+build/$(DEV_PKG)::
+	$(MAKE) -C docs/reference
+
+install/$(DEV_PKG)::
+	$(MAKE) -C examples clean

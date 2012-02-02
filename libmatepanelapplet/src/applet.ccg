@@ -1,0 +1,130 @@
+/* Copyright 2003 libmatepanelappletmm Development Team
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free
+ * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+
+namespace Mate
+{
+
+namespace Panel
+{
+
+AppletOrient Applet::get_orientation() const
+{
+  MatePanelAppletOrient c_orient = mate_panel_applet_get_orient(const_cast<MatePanelApplet*>(gobj()));
+  AppletOrient returncode = APPLET_ORIENT_UP; // Arbitrary value.
+
+  switch(c_orient)
+  {
+    case MATE_PANEL_APPLET_ORIENT_UP:
+      returncode = APPLET_ORIENT_UP;
+      break;
+    case MATE_PANEL_APPLET_ORIENT_DOWN:
+      returncode = APPLET_ORIENT_DOWN;
+      break;
+    case MATE_PANEL_APPLET_ORIENT_LEFT:
+      returncode = APPLET_ORIENT_LEFT;
+      break;
+    case MATE_PANEL_APPLET_ORIENT_RIGHT:
+      returncode = APPLET_ORIENT_RIGHT;
+      break;
+    default:
+      g_warning("Unexpected Orientation Value");
+  }
+
+  return returncode;
+}
+
+AppletBackgroundType Applet::get_background(Gdk::Color& color, Glib::RefPtr<Gdk::Pixmap>& pixmap) const
+{
+  GdkColor cColor;
+  GdkPixmap* cpPixmap = 0;
+  MatePanelAppletBackgroundType result = mate_panel_applet_get_background(const_cast<MatePanelApplet*>(gobj()), &cColor, &cpPixmap);
+
+  //This must be copied, because it is a local instance here that will be automatically deleted.
+  color = Glib::wrap(&cColor, true /* take_copy */);
+
+  //This seems to come from a gdk_pixmap_new(), in the source code, so it doesn't need an extra ref.
+  //However, the C function is undocumented, and seems to be unused.
+  //Normally the documentation would say whether it should be reffed and/or unreffed by the caller.
+  pixmap = Glib::wrap((GdkPixmapObject*)cpPixmap); //, true /* take_copy */);  //We need the cast because the C type is not a real type.
+
+  return (AppletBackgroundType)result;
+}
+
+void Applet::set_size_hints(const Glib::ArrayHandle<int>& size_hints, int base_size)
+{
+  mate_panel_applet_set_size_hints(gobj(), size_hints.data(), size_hints.size(), base_size);
+}
+
+void Applet::mateconf_set_list(const Glib::ustring& key, const Mate::Conf::SListHandle_ValueBool& list)
+{
+  GError *error = 0;
+  mate_panel_applet_mateconf_set_list(gobj(), key.c_str(), MATECONF_VALUE_BOOL, list.data(), &(error));
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+void Applet::mateconf_set_list(const Glib::ustring& key, const Mate::Conf::SListHandle_ValueInt& list)
+{
+  GError *error = 0;
+  mate_panel_applet_mateconf_set_list(gobj(), key.c_str(), MATECONF_VALUE_INT, list.data(), &(error));
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+void Applet::mateconf_set_list(const Glib::ustring& key, const Mate::Conf::SListHandle_ValueString& list)
+{
+  GError *error = 0;
+  mate_panel_applet_mateconf_set_list(gobj(), key.c_str(), MATECONF_VALUE_STRING, list.data(), &(error));
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+void Applet::mateconf_set_list(const Glib::ustring& key, const Mate::Conf::SListHandle_ValueFloat& list)
+{
+  GError *error = 0;
+  mate_panel_applet_mateconf_set_list(gobj(), key.c_str(), MATECONF_VALUE_FLOAT, list.data(), &(error));
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+Mate::Conf::SListHandle_ValueBool Applet::mateconf_get_bool_list(const Glib::ustring& key) const
+{
+  GError *error = 0;
+  return Mate::Conf::SListHandle_ValueBool(mate_panel_applet_mateconf_get_list(const_cast<MatePanelApplet*>(gobj()), key.c_str(), MATECONF_VALUE_BOOL, &(error)), Glib::OWNERSHIP_NONE);
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+Mate::Conf::SListHandle_ValueInt Applet::mateconf_get_int_list(const Glib::ustring& key) const
+{
+  GError *error = 0;
+  return Mate::Conf::SListHandle_ValueInt(mate_panel_applet_mateconf_get_list(const_cast<MatePanelApplet*>(gobj()), key.c_str(), MATECONF_VALUE_INT, &(error)), Glib::OWNERSHIP_NONE);
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+Mate::Conf::SListHandle_ValueString Applet::mateconf_get_string_list(const Glib::ustring& key) const
+{
+  GError *error = 0;
+  return Mate::Conf::SListHandle_ValueString(mate_panel_applet_mateconf_get_list(const_cast<MatePanelApplet*>(gobj()), key.c_str(), MATECONF_VALUE_STRING, &(error)), Glib::OWNERSHIP_NONE);
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+Mate::Conf::SListHandle_ValueFloat Applet::mateconf_get_float_list(const Glib::ustring& key) const
+{
+  GError *error = 0;
+  return Mate::Conf::SListHandle_ValueFloat(mate_panel_applet_mateconf_get_list(const_cast<MatePanelApplet*>(gobj()), key.c_str(), MATECONF_VALUE_FLOAT, &(error)), Glib::OWNERSHIP_NONE);
+  if(error) ::Glib::Error::throw_exception(error);
+}
+
+} //namespace Panel
+
+} //namespace Mate

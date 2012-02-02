@@ -1,0 +1,22 @@
+;; From mate-panel-applet.h
+
+(define-enum-extended AppletBackgroundType
+  (in-module "Panel")
+  (c-name "MatePanelAppletBackgroundType")
+  (values
+    '("no-background" "PANEL_NO_BACKGROUND" "0")
+    '("color-background" "PANEL_COLOR_BACKGROUND" "1")
+    '("pixmap-background" "PANEL_PIXMAP_BACKGROUND" "2")
+  )
+)
+
+(define-flags-extended AppletFlags
+  (in-module "Panel")
+  (c-name "MatePanelAppletFlags")
+  (values
+    '("flags-none" "MATE_PANEL_APPLET_FLAGS_NONE" "0")
+    '("expand-major" "MATE_PANEL_APPLET_EXPAND_MAJOR" "1 << 0")
+    '("expand-minor" "MATE_PANEL_APPLET_EXPAND_MINOR" "1 << 1")
+    '("has-handle" "MATE_PANEL_APPLET_HAS_HANDLE" "1 << 2")
+  )
+)

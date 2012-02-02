@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libmatepanelappletmm
+Description: C++ wrapper for libmatepanelapplet
+Requires: gtkmm-2.4 >= @GTKMM_VERSION_NEEDED@ mateconfmm-2.6 >= @MATECONFMM_VERSION_NEEDED@ libmatepanelapplet-2.0 >= @LIBPANELAPPLET_VERSION_NEEDED@
+Version: @VERSION@
+Libs: -L${libdir} -lmatepanelappletmm-2.6
+Cflags: -I${includedir}/libmatepanelappletmm-2.6 -I${libdir}/libmatepanelappletmm-2.6/include

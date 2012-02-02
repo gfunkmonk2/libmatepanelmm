@@ -1,0 +1,10 @@
+0. Documentation, documentation, documentation:
+    a) I hate sparsely documented libs/programs/etc. so this will not be a problem
+       with my stuff.  Please, if you have doc suggestions, file a bug!  If our
+       wording improves on the mate-panel-applet docs, file a bug with the mate-panel-applet project
+       as well.  If you don't document, you will get an email asking for it :).
+    b) If you don't understand wrapping, or simply just want to do documents, please check
+       out docs/undocumented to see what you can document.  Thank you!
+
+1. Figure out a better way to implement mate_panel_applet_mateconf_*_list.  Should it be a template/inline
+   function?  Probably. There is similar, working, stuff in mateconfmm itself.

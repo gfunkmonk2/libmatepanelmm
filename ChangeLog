@@ -1,0 +1,232 @@
+2009-05-16  Hubert Figuiere  <hub@figuiere.net>
+
+	* configure.in
+	* libmatepanelapplet/libmatepanelappletmm-2.6-uninstalled.pc.in
+	* libmatepanelapplet/libmatepanelappletmm-2.6.pc.in
+	Remove libmatemm from the dependencies.
+
+	* configure.in
+	Bump to 2.26.
+
+2009-05-01  Hubert Figuiere  <hub@figuiere.net>
+
+	* libmatepanelapplet/libmatepanelappletmm/init.cc (Mate): 
+	Remove the libmateui dependency. (Closes #580812)
+
+2009-01-24  Deng Xiyue  <manphiz@gmail.com>
+
+	* Change license header to mention Lesser General Public License
+	version 2.1 instead of Library General Public License, to be
+	consistent with COPYING.
+
+2008-03-28  Tim Retout  <tim@retout.co.uk>
+
+	* libmatepanelapplet/libmatepanelappletmm/factory.h: applet_factory_callback():
+	Comment out an unused method parameter.
+
+2.22.0:
+
+2008-03-07  Murray Cumming  <murrayc@murrayc.com>
+
+	* libmatepanelapplet/src/libmatepanelapplet_methods.defs: Regenerated with 
+	h2defs.py (in pygtk).
+	* libmatepanelapplet/src/applet.hg: Added request_focus() and 
+	set_background_widget().
+	Bug #519340 (Fanosek).
+
+2005-12-06   Jonathon Jongsma <jonathon.jongsma@gmail.com>
+
+	* configure.in: Look for gmmproc in generic libdir 
+	directory, because that is not always lib/. This 
+	fixes the build on some 64-bit systems.
+
+2.6.0:
+
+2004-04-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* libmatepanelapplet/src/signals.defs: Corrected the change-orient 
+	definition to send an enum instead of an int. I will submit a patch 
+	for mate-panel so that this will be correctly generated in future.
+
+2004-04-12  Bryan Forbes  <bryan@reigndropsfall.net>
+
+	* libmatepanelapplet/src/applet.hg: wrap the new lockdown method and some new
+	properties.
+	* libmatepanelapplet/src/*.defs: update for 2.6.
+
+2.5.2:
+
+2004-04-06  Alexander Nedotsukov <bland@FreeBSD.org>
+
+	* Fixed a number of installation directories messed up
+ 	after 2.0 -> 2.6 change.
+ 	* Fixed .pc file content to do proper linking in dependant
+ 	projects.
+
+2004-04-05  Murray Cumming  <murrayc@murrayc.com>
+
+	* Corrected the requires and includes in the pkg-config.pc.in files.
+
+2.5.1:
+
+2004-02-13  Murray Cumming  <murrayc@usa.net>
+
+	* Update for libsigc++ 2.
+
+2.5.0:
+
+2003-12-22  Murray Cumming  <murrayc@usa.net>
+
+	* This is HEAD, with libmatepanelappletmm 2.5, for gtkmm 2.4. This
+	is parallel-installable with libmatepanelappletmm 1.3.
+
+2003-12-07  Bryan Forbes  <mxpxfifws@yahoo.com>
+	
+	* NEWS: updated for new release.
+	* libmatepanelapplet/src/enums.[hg|ccg]: changed AppletOrient from using the
+	values defined in mate-panel-applet.h.
+	* libmatepanelapplet/src/applet.[hg|ccg]: hand coded get_orientation() to check
+	which enum value we're getting from the C function and return the correct
+	C++ enum value (thanks Murray!).
+	* libmatepanelapplet/libmatepanelappletmm/types.h: removed from repository.
+
+2003-12-07  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* configure.in: Version 1.3.2; bumped SO_VERSION to 3:0:0.
+	* libmatepanelapplet/libmatepanelappletmm.h: removed the inclusion of types.h.
+	* libmatepanelapplet/src/enums.[hg|ccg]: added AppletOrient; this makes the
+	get_orientation() function work correctly;
+	* libmatepanelapplet/src/applet.[hg|ccg]: removed the inclusion of types.h.
+	* libmatepanelapplet/libmatepanelappletmm/Makefile.am: removed the installation of
+	types.h.
+
+1.3.1:
+
+2003-12-03  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* configure.in: Version 1.3.1; bumped SO_VERSION to 2:0:0.
+	* README: Removed explanation from the bottom because it doesn't apply
+	anymore.
+	* NEWS: Added news stuff from last release (whoops!) and for this release.
+	* TODO: Updated.
+	* libmatepanelapplet/src/applet.[hg|ccg]: added mateconf_[get|set]_*_list
+	functions.
+	* libmatepanelapplet/libmatepanelappletmm/private/Makefile.am: removed references to
+	libmateprintmm to fix installation (thanks to Alexander Nedotsukov), fixes
+	#128413.
+
+1.3.0:
+
+2003-12-01  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/libmatepanelappletmm-2.0.pc.in:
+	* libmatepanelapplet/libmatepanelappletmm-2.0-uninstalled.pc.in: fixed the
+	dependecies so libmatemm and mateconfmm header paths and libraries get
+	included in the fun.
+	* libmatepanelapplet/stamp-h.in: added this file... it wasn't there for some
+	reason.
+	* libmatepanelapplet/libmatepanelappletmm/factory.[h|cc]: made the factory_main and
+	shlib_factory functions template functions as per Murray's suggestion; moved
+	SignalProxy_Factory to the header and added applet_factory_callback() in the
+	anonymous namespace so the developer doesn't have to worry about it.
+	* examples/simple/main.cc: Updated the example to work with the new changes
+	to the factory code; removed some commented out code that we don't need and
+	removed the anonymous namespace; also removed Murray's comments because I
+	implemented them.
+	* examples/mateconf/*: Started a new example which will demonstrate all the
+	mateconf stuff you can do with panel applets; needs much work still, but it
+	compiles and runs.
+	* libmatepanelapplet/src/applet.[hg|ccg]: changed set_size_hints to use an
+	ArrayHandle<int> instead of a C array.
+	* Added .cvsignore files to all subdirs.
+
+2003-11-29  Murray Cumming  <murrayc@usa.net>
+
+	* examples/simple/main.cc: Added some comments, with suggestions for
+	the future API.
+
+2003-11-19  Murray Cumming  <murrayc@usa.net>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]:
+	- Hand-coded get_background() to use C++ types.
+	- get_control() const, and get_popup_component() const now return const
+	types.
+	- Wrapped mateconf_get_full_key().
+	* configure.in: It now depends on libmatemm rather than libmateuimm,
+	and I'm not even sure that it needs that.
+
+2003-11-19  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* examples/simple/main.cc: added a new function and menu item to demonstrate
+	the get_background() method; fixed up for factory method changes.
+	* libmatepanelapplet/libmatepanelappletmm/factory.[h|cc]: always pass
+	Applet::get_type() to the *_factory_* functions' 2nd argument.
+	* libmatepanelapplet/src/applet.hg: changed the change-background signal so it
+	is now using gtkmm classes; same with get_background.
+	* tools/m4/convert_libmatepanelappletmm.m4: added macros to convert GdkColor and
+	GtkPixmaps to gtkmm classes.
+
+2003-11-14  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]: changed Gdk::Color to const
+	Gdk::Color& in the change-background signal as per Murray's suggestion.
+
+2003-11-13  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]: took out the get/set list mateconf stuff
+	because I'm not sure what to do with it for now.
+	* TODO: updated.
+
+2003-11-13  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* examples/simple/main.cc: fixed the calls and functions so they work with
+	the now working c++ calls; took menu_xml, menu_verbs, and size_diag and put
+	them in an anonymous namespace.
+	* libmatepanelapplet/libmatepanelappletmm/factory.[h|cc]: fixed the factory
+	functions so they work; passing MatePanelApplet* in our slot (explained in the
+	README).
+	* README: updated with my reasoning for doing what I did with the factory slot.
+
+2003-11-04  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* Initial cvs import!
+	* libmatepanelapplet/src/enums.hg: go back to using NO_GTYPE until mate-panel
+	is fixed.
+
+2003-11-03  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]: 
+	* libmatepanelapplet/libmatepanelappletmm/factory.[h|cc]: merged some changes Murray
+	submitted to me.
+	* libmatepanelapplet/libmatepanelappletmm/init.[h|cc]: modified init() to accept
+	parameters so the developer doesn't have to call Mate::Main() and so we can
+	pass the same parameters as MATE_PANEL_APPLET_* macros pass mate_program_init().
+
+2003-10-31  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/libmatepanelappletmm/factory.[h|cc]: took the factory functions
+	out of applet.[hg|ccg] and put them in this file; moved the slot typedef to
+	this file as well.
+	* examples/simple/*: Created everything for this example.
+
+2003-10-29  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]: wrapped the last three signals.
+	* libmatepanelapplet/src/libmatepanelapplet_signals.defs: fixed the defs file
+	because of incorrectly registered parameters.
+
+2003-10-27  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* libmatepanelapplet/src/applet.[hg|ccg]: wrapped almost all methods/functions.
+
+2003-10-22  Bryan Forbes  <mxpxfifws@yahoo.com>
+
+	* Created base project from libmateprintmm; changed all references to
+	mateprint to matepanelapplet and so forth; also, changed any reference to
+	mate-vfsmm to matepanelappletmm.
+	* libmatepanelapplet/src/enum.[hg|ccg]: wrapped enumerations.
+	* libmatepanelapplet/src/applet.[hg|ccg]: created bare Applet class.
+	* libmatepanelapplet/*.defs: created all defs files.
+	* libmatepanelapplet/libmatepanelappletmm/exception.[h|cc]: created this class.
+	* libmatepanelapplet/libmatepanelappletmm/types.h: created this and put the types
+	for the enums in here.

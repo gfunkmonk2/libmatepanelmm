@@ -1,0 +1,64 @@
+%define version		@VERSION@
+%define release		1
+
+Name: libmatepanelappletmm
+Summary: C++ wrapper for mate-vfs
+Version: %{version}
+Release: %{release}
+License: LGPL
+Group: System Environment/Libraries
+URL: http://gtkmm.sourceforge.net/
+Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkmm/%{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+Requires: gtkmm2 >= 2.0.0 mate-vfs2 >= 2.0
+BuildPrereq: gtkmm2-devel >= 2.0.0 mate-vfs2-devel >= 2.0 
+
+%description
+This package is part of the matemm project and provides a C++ interface for
+mate-vfs.  
+
+%package devel
+Summary: Headers for developing programs that will use %{name}.
+Group: Development/Libraries
+Requires: %{name} = %{version}
+
+%description devel
+This package contains the static libraries and header files needed for
+developing applications with %{name}.
+
+
+%prep
+%setup -q -n libmatepanelappletmm-%{version}
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+rm -rf %{buildroot}
+
+%makeinstall
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-, root, root)
+%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%{_libdir}/*.so.*
+
+%files devel
+%defattr(-, root, root)
+%{_includedir}/%{name}-2.0
+%{_libdir}/*.so
+%exclude %{_libdir}/*.la
+%{_libdir}/%{name}-2.0
+%{_libdir}/pkgconfig/*.pc
+
+%changelog
+* Wed Jul 22 2003 Gerald Henriksen <ghenriks@rogers.com> 
+- Initial release

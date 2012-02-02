@@ -1,0 +1,44 @@
+/* $Id: enums.hg,v 1.5 2003/12/07 20:42:58 mxpxpod Exp $ */
+// -*- C++ -*- // this is for the .hg, I realize gensig puts one in
+
+/* Copyright 2003 libmatepanelappletmm Development Team
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free
+ * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+
+
+_DEFS(libmatepanelappletmm,libmatepanelapplet)
+
+namespace Mate
+{
+
+namespace Panel
+{
+
+_CC_INCLUDE(mate-panel-applet.h)
+
+_WRAP_ENUM(AppletBackgroundType, MatePanelAppletBackgroundType, NO_GTYPE)
+_WRAP_ENUM(AppletFlags, MatePanelAppletFlags, NO_GTYPE)
+
+enum AppletOrient
+{
+  APPLET_ORIENT_UP,
+  APPLET_ORIENT_DOWN,
+  APPLET_ORIENT_LEFT,
+  APPLET_ORIENT_RIGHT
+};
+
+} // namespace Panel
+} // namespace Mate

@@ -1,0 +1,6 @@
+In order for this to work, you need to edit the .server file by replacing PREFIX with the directory
+where this tree is.  Then put the .server file in /usr/lib/matecomponent/servers (or wherever your matecomponent 
+server files are located).  You may need to restart the panel to get this applet to show up in
+the menu.
+
+-Bryan

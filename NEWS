@@ -1,0 +1,55 @@
+2.26.0:
+
+* Remove libmateui and libmatemm (Hubert Figuiere)
+* Remove some unused parameters / warnings (Tim Retout)
+
+2.22.0:
+
+* Applet: Added request_focus() (added in libmatepanelapplet 2.10)
+  and set_background_widget() (added in libmatepanelapplet 2.14).
+  (Murray Cumming)
+  Bug #519340 (Fanosek).
+
+2.6.0: (API-stable release).
+
+* Applet: Added get_locked_down().
+
+2.5.2:
+
+Corrected installation locations and pkgconfig file.
+(Alexander Nedotsukov)
+
+2.5.1:
+
+Updated for latest gtkmm 2.4 API.
+
+2.5.0:
+
+This is the first version of libmatepanelappletmm 2.5/2.6, which uses gtkmm 2.4
+and is parallel-installable with libmatepanelappletmm 1.3/2.0.
+
+1.3.2:
+
+* Changed Mate::Panel::AppletOrient from a typedef to an actual enum.
+* Removed types.h because it's not needed anymore.
+* get_orientation() now checks which C enum value is returned and returns
+  the correct C++ enum value. (Murray's idea).
+(Bryan Forbes)
+
+1.3.1:
+
+* Removed references to libmateprintmm; fixes #128413 (Alexander Nedotsukov)
+* Added get and set methods for the MateConf API.
+
+1.3.0:
+
+* Initial Skeleton created
+* Wrapped Applet class and methods
+* Created factory functions
+* Made factory functions template functions (Murray's idea)
+* Created two examples to demonstrate wrapper
+(Bryan Forbes)
+
+* Hand-coded Applet::get_background() to use C++ types
+* Fixed dependencies
+(Murray Cumming)

@@ -1,0 +1,10 @@
+local_libmatepanelappletmm_lib	= $(top_builddir)/libmatepanelapplet/libmatepanelappletmm/libmatepanelappletmm-2.6.la
+
+LIBS  = $(local_libmatepanelappletmm_lib) $(LIBPANELAPPLETMM_LIBS)
+
+all_includes = -I$(top_builddir)/libmatepanelapplet -I$(top_srcdir)/libmatepanelapplet \
+               $(LIBPANELAPPLETMM_CFLAGS)
+                     
+DEFS			= @DEFS@
+DEFAULT_INCLUDES	=
+INCLUDES		= -I. -I$(srcdir) $(strip $(all_includes))

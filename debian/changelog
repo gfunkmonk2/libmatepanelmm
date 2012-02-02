@@ -1,0 +1,77 @@
+libmatepanelappletmm2.6 (1.1.0-1) oneiric; urgency=low
+
+  * fork
+
+ -- Matt Rinsch <gfunkmonk@gmail.com>  Wed, 01 Feb 2012 23:04:56 -0500
+
+libmatepanelappletmm2.6 (2.26.0-1) unstable; urgency=low
+
+  [ Deng Xiyue ]
+  * Build-Depend on dpkg >= 1.14.16 for DM usage.
+  * Use machine-interpretable format for debian/copyright.
+  * Use POSIX standard regex classes in sed trick in debian/rules.
+
+  [ Loic Minier ]
+  * Properly anchor package name regexp.
+
+  [ Deng Xiyue ]
+  * New upstream release.
+    + Drop libmatemm-2.6-dev from bdep, not needed anymore.  (Closes: #537038)
+  * `make -C examples clean` after `make install` to prevent shipping
+    unexpected files.
+  * Update copyright file conform to the latest DEP 5.
+    + Fix incorrect license.
+    + Point to versioned copyright files.
+  * Update Standard-Version to 3.8.2.  No other changes needed.
+
+ -- Deng Xiyue <manphiz-guest@users.alioth.debian.org>  Wed, 22 Jul 2009 09:17:33 +0800
+
+libmatepanelappletmm2.6 (2.22.0-1) unstable; urgency=low
+
+  * New upstream version.
+  * Add MATE Team as Uploaders.
+  * Migrate building system to cdbs.
+  * Stop shipping .la file.  (Closes: #374318)
+  * Update compat level to 6, hence debhelper >= 6, cdbs >= 0.4.51 (for
+    empty -dbg bug).
+  * Use chrpath to get rid of rpath on 64bit system.
+  * Clean up (Build-)Depends as per upstream configure.in.
+  * Use ${binary:Version} instead of deprecated ${Source-Version} for
+    binNMU safety.
+  * Update standard version to 3.7.3.
+  * Add ${misc:Depends} and ${shlibs:Depends} as recommended.
+  * Remove obsolete dirs file.
+  * Retain original docs directory hierarchy, and fix doc-base path.
+  * Refine watch file to be consistent with other MATE packages.
+  * Use versioned shared lib, bump to 2.22.0 due to new API.
+  * Update copyright file, add proper years for copyright holders.
+  * Refine description to mention documentation in -dev.
+  * Ship examples in -dev package.  (Closes: #346480)
+  * Add `DM-Upload-Allowed: yes'.
+  * Add Homepage, Vcs-Browser and Vcs-Svn fields to debian/control*.
+
+ -- Deng Xiyue <manphiz-guest@users.alioth.debian.org>  Tue, 25 Mar 2008 19:14:32 +0800
+
+libmatepanelappletmm2.6 (2.6.0-4) unstable; urgency=low
+
+  * C++ transition (Closes: #328086)
+
+ -- Bradley Bell <btb@debian.org>  Tue, 29 Nov 2005 15:45:37 -0800
+
+libmatepanelappletmm2.6 (2.6.0-3) unstable; urgency=low
+
+  * Fixed watch file
+
+ -- Bradley Bell <btb@debian.org>  Wed, 22 Sep 2004 20:07:01 -0700
+
+libmatepanelappletmm2.6 (2.6.0-2) unstable; urgency=low
+
+  * added build-dep on doxygen (Closes: #259507)
+
+ -- Bradley Bell <btb@debian.org>  Tue, 20 Jul 2004 13:01:59 -0700
+
+libmatepanelappletmm2.6 (2.6.0-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Bradley Bell <btb@debian.org>  Thu,  1 Jul 2004 12:45:32 -0700

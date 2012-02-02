@@ -1,0 +1,47 @@
+Source: libmatepanelappletmm2.6
+Section: libs
+Priority: optional
+Maintainer: Bradley Bell <btb@debian.org>
+Uploaders: @MATE_TEAM@
+DM-Upload-Allowed: yes
+Homepage: http://www.gtkmm.org/
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-mate/packages/unstable/libmatepanelappletmm2.6
+Vcs-Svn: svn://svn.debian.org/svn/pkg-mate/packages/unstable/libmatepanelappletmm2.6
+Build-Depends: cdbs (>= 0.4.51),
+               chrpath,
+               debhelper (>= 6),
+               dpkg-dev (>= 1.14.16),
+               libmateconfmm-2.6-dev,
+               libgtkmm-2.4-dev (>= 2.4.0),
+               libmatepanelapplet-dev,
+               doxygen
+Standards-Version: 3.8.2
+
+Package: libmatepanelappletmm-2.6-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libmatepanelappletmm-2.6-1c2 (= ${binary:Version}),
+         libmateconfmm-2.6-dev,
+         libgtkmm-2.4-dev (>= 2.4.0),
+         libmatepanelapplet-dev
+Description: C++ wrappers for libmate-panel-applet (development files)
+ Libmate-panel-applet is the library for MATE 2 Panel applets.  This is
+ the C++ binding of libmate-panel-applet.
+ .
+ This package contains development files and documentation, as well as
+ examples.
+
+Package: libmatepanelappletmm-2.6-1c2
+Section: libs
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Conflicts: libmatepanelappletmm-2.6-1
+Replaces: libmatepanelappletmm-2.6-1
+Description: C++ wrappers for libmate-panel-applet (shared library)
+ Libmate-panel-applet is the library for MATE 2 Panel applets.  This is
+ the C++ binding of libmate-panel-applet.
+ .
+ This package contains shared libraries.

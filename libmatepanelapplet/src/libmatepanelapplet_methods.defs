@@ -1,0 +1,399 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object Applet
+  (in-module "Panel")
+  (parent "GtkEventBox")
+  (c-name "MatePanelApplet")
+  (gtype-id "PANEL_TYPE_APPLET")
+)
+
+;; Enumerations and flags ...
+
+(define-enum AppletBackgroundType
+  (in-module "Panel")
+  (c-name "MatePanelAppletBackgroundType")
+  (gtype-id "PANEL_TYPE_APPLET_BACKGROUND_TYPE")
+  (values
+    '("no-background" "PANEL_NO_BACKGROUND")
+    '("color-background" "PANEL_COLOR_BACKGROUND")
+    '("pixmap-background" "PANEL_PIXMAP_BACKGROUND")
+  )
+)
+
+(define-flags AppletFlags
+  (in-module "Panel")
+  (c-name "MatePanelAppletFlags")
+  (gtype-id "PANEL_TYPE_APPLET_FLAGS")
+  (values
+    '("flags-none" "MATE_PANEL_APPLET_FLAGS_NONE")
+    '("expand-major" "MATE_PANEL_APPLET_EXPAND_MAJOR")
+    '("expand-minor" "MATE_PANEL_APPLET_EXPAND_MINOR")
+    '("has-handle" "MATE_PANEL_APPLET_HAS_HANDLE")
+  )
+)
+
+
+;; From MATE_Panel.h
+
+(define-function MATE_Vertigo_PanelShell_displayRunDialog
+  (c-name "MATE_Vertigo_PanelShell_displayRunDialog")
+  (return-type "none")
+  (parameters
+    '("MATE_Vertigo_PanelShell" "_obj")
+    '("const-CORBA_char*" "initialString")
+    '("CORBA_Environment*" "ev")
+  )
+)
+
+(define-function MATE_Vertigo_MatePanelAppletShell_popup_menu
+  (c-name "MATE_Vertigo_MatePanelAppletShell_popup_menu")
+  (return-type "none")
+  (parameters
+    '("MATE_Vertigo_MatePanelAppletShell" "_obj")
+    '("const-CORBA_long" "button")
+    '("const-CORBA_long" "time")
+    '("CORBA_Environment*" "ev")
+  )
+)
+
+
+
+;; From mate-panel-applet-enums.h
+
+(define-function mate_panel_applet_background_type_get_type
+  (c-name "mate_panel_applet_background_type_get_type")
+  (return-type "GType")
+)
+
+(define-function mate_panel_applet_flags_get_type
+  (c-name "mate_panel_applet_flags_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From mate-panel-applet-mateconf.h
+
+(define-method mateconf_get_full_key
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_full_key")
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "key")
+  )
+)
+
+(define-method mateconf_set_bool
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_bool")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("gboolean" "the_bool")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_set_int
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_int")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("gint" "the_int")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_set_string
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_string")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("const-gchar*" "the_string")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_set_float
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_float")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("gdouble" "the_float")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_set_list
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_list")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("MateConfValueType" "list_type")
+    '("GSList*" "list")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_set_value
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_set_value")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "key")
+    '("MateConfValue*" "value")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_bool
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_bool")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "key")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_int
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_int")
+  (return-type "gint")
+  (parameters
+    '("const-gchar*" "key")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_string
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_string")
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "key")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_float
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_float")
+  (return-type "gdouble")
+  (parameters
+    '("const-gchar*" "key")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_list
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_list")
+  (return-type "GSList*")
+  (parameters
+    '("const-gchar*" "key")
+    '("MateConfValueType" "list_type")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method mateconf_get_value
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_mateconf_get_value")
+  (return-type "MateConfValue*")
+  (parameters
+    '("const-gchar*" "key")
+    '("GError**" "opt_error")
+  )
+)
+
+
+
+;; From mate-panel-applet.h
+
+(define-function mate_panel_applet_get_type
+  (c-name "mate_panel_applet_get_type")
+  (return-type "GType")
+)
+
+(define-function mate_panel_applet_new
+  (c-name "mate_panel_applet_new")
+  (is-constructor-of "MatePanelApplet")
+  (return-type "GtkWidget*")
+)
+
+(define-method get_orient
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_orient")
+  (return-type "MatePanelAppletOrient")
+)
+
+(define-method get_size
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_size")
+  (return-type "guint")
+)
+
+(define-method get_background
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_background")
+  (return-type "MatePanelAppletBackgroundType")
+  (parameters
+    '("GdkColor*" "color")
+    '("GdkPixmap**" "pixmap")
+  )
+)
+
+(define-method set_background_widget
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_set_background_widget")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "widget")
+  )
+)
+
+(define-method get_preferences_key
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_preferences_key")
+  (return-type "gchar*")
+)
+
+(define-method add_preferences
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_add_preferences")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "schema_dir")
+    '("GError**" "opt_error")
+  )
+)
+
+(define-method get_flags
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_flags")
+  (return-type "MatePanelAppletFlags")
+)
+
+(define-method set_flags
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_set_flags")
+  (return-type "none")
+  (parameters
+    '("MatePanelAppletFlags" "flags")
+  )
+)
+
+(define-method set_size_hints
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_set_size_hints")
+  (return-type "none")
+  (parameters
+    '("const-int*" "size_hints")
+    '("int" "n_elements")
+    '("int" "base_size")
+  )
+)
+
+(define-method get_locked_down
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_locked_down")
+  (return-type "gboolean")
+)
+
+(define-method request_focus
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_request_focus")
+  (return-type "none")
+  (parameters
+    '("guint32" "timestamp")
+  )
+)
+
+(define-method get_control
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_control")
+  (return-type "MateComponentControl*")
+)
+
+(define-method get_popup_component
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_get_popup_component")
+  (return-type "MateComponentUIComponent*")
+)
+
+(define-method setup_menu
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_setup_menu")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "xml")
+    '("const-MateComponentUIVerb*" "verb_list")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method setup_menu_from_file
+  (of-object "MatePanelApplet")
+  (c-name "mate_panel_applet_setup_menu_from_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "opt_datadir")
+    '("const-gchar*" "file")
+    '("const-gchar*" "opt_app_name")
+    '("const-MateComponentUIVerb*" "verb_list")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-function mate_panel_applet_factory_main
+  (c-name "mate_panel_applet_factory_main")
+  (return-type "int")
+  (parameters
+    '("const-gchar*" "iid")
+    '("GType" "applet_type")
+    '("MatePanelAppletFactoryCallback" "callback")
+    '("gpointer" "data")
+  )
+)
+
+(define-function mate_panel_applet_factory_main_closure
+  (c-name "mate_panel_applet_factory_main_closure")
+  (return-type "int")
+  (parameters
+    '("const-gchar*" "iid")
+    '("GType" "applet_type")
+    '("GClosure*" "closure")
+  )
+)
+
+(define-function mate_panel_applet_shlib_factory
+  (c-name "mate_panel_applet_shlib_factory")
+  (return-type "MateComponent_Unknown")
+  (parameters
+    '("const-char*" "iid")
+    '("GType" "applet_type")
+    '("PortableServer_POA" "poa")
+    '("gpointer" "impl_ptr")
+    '("MatePanelAppletFactoryCallback" "callback")
+    '("gpointer" "user_data")
+    '("CORBA_Environment*" "ev")
+  )
+)
+
+(define-function mate_panel_applet_shlib_factory_closure
+  (c-name "mate_panel_applet_shlib_factory_closure")
+  (return-type "MateComponent_Unknown")
+  (parameters
+    '("const-char*" "iid")
+    '("GType" "applet_type")
+    '("PortableServer_POA" "poa")
+    '("gpointer" "impl_ptr")
+    '("GClosure*" "closure")
+    '("CORBA_Environment*" "ev")
+  )
+)
